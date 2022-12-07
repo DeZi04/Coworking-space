@@ -16,10 +16,13 @@ public class Entry {
   private Integer id;
 
   @Column(nullable = false)
-  private String status;
+  private StatusEnume status;
 
   @Column(nullable = false)
   private LocalDateTime date;
+
+  @Column(nullable = false)
+  private double duration;
 
   @ManyToOne
   @Fetch(FetchMode.JOIN)
@@ -37,11 +40,11 @@ public class Entry {
     this.id = id;
   }
 
-  public String getStatus() {
+  public StatusEnume getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(StatusEnume status) {
     this.status = status;
   }
 
@@ -51,6 +54,14 @@ public class Entry {
 
   public void setDate(LocalDateTime date) {
     this.date = date;
+  }
+
+  public double getDuration() {
+    return duration;
+  }
+
+  public void setDuration(double duration) {
+    this.duration = duration;
   }
 
   public Workplace getWorkplace() {
@@ -68,6 +79,8 @@ public class Entry {
   public void setMember(Member member) {
     this.member = member;
   }
+
+  
 
  
 }

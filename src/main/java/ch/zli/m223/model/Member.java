@@ -34,7 +34,7 @@ public class Member {
   private String password;
 
   @Column(nullable = false)
-  private String role;
+  private RoleEnum role;
 
   public Integer getId() {
     return id;
@@ -76,11 +76,11 @@ public class Member {
     this.password = password;
   }
 
-  public String getRole() {
+  public RoleEnum getRole() {
     return role;
   }
 
-  public void setRole(String role) {
+  public void setRole(RoleEnum role) {
     this.role = role;
   }
 
