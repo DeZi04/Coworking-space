@@ -25,10 +25,10 @@ import ch.zli.m223.service.MemberSercvice;
 @Path("/users")
 @Tag(name = "Users", description = "Handling of users")
 @RolesAllowed({ "User", "Admin" })
-public class ApplicationUserController {
+public class MemberController {
   
   @Inject
-  MemberSercvice userService;
+  MemberSercvice memberService;
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
@@ -37,7 +37,7 @@ public class ApplicationUserController {
       description = "Returns a list of all users."
   )
   public List<Member> index() {
-      return userService.findAll();
+      return memberService.findAll();
   }
 
   @POST
@@ -49,7 +49,7 @@ public class ApplicationUserController {
   )
   @PermitAll
   public Member create(Member user) {
-     return userService.createUser(user);
+     return memberService.createMember(user);
   }
 
   @Path("/{id}")
@@ -58,8 +58,8 @@ public class ApplicationUserController {
       summary = "Deletes an user.",
       description = "Deletes an user by its id."
   )
-  public void delete(@PathParam("id") Long id) {
-      userService.deleteUser(id);
+  public void delete(@PathParam("id") Integer id) {
+      memberService.deleteMember(id);
   }
 
   @Path("/{id}")
@@ -68,7 +68,7 @@ public class ApplicationUserController {
       summary = "Updates an user.",
       description = "Updates an user by its id."
   )
-  public Member update(@PathParam("id") Long id, Member user) {
-      return userService.updateUser(id, user);
+  public Member update(@PathParam("id") Integer id, Member member) {
+      return memberService.updateMember(id, member);
   }
 }

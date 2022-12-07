@@ -1,6 +1,6 @@
-# Übungsprojekt: Punch Clock
+# Übungsprojekt: CoWorkingSpace
 
-Punch Clock ist ein Zeiterfassungssystem, welches mit Quarkus entwickelt wird.
+CoWorkingSpace ist ein tool um Coworkingspaces zu buchen, welches mit Quarkus entwickelt wird.
 
 ## Erste Schritte
 

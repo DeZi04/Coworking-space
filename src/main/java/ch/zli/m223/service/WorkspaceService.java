@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import ch.zli.m223.model.Workspace;
+
 
 @ApplicationScoped
 public class WorkspaceService {
@@ -14,18 +16,18 @@ public class WorkspaceService {
     EntityManager entityManager;
 
     @Transactional
-    public WorkspaceService createWorkspace(WorkspaceService workspace) {
+    public Workspace createWorkspace(Workspace workspace) {
         return entityManager.merge(workspace);
     }
 
     @Transactional
-    public void deleteWrokspace(Long id) {
+    public void deleteWorkspace(Integer id) {
         var entity = entityManager.find(WorkspaceService.class, id);
         entityManager.remove(entity);
     }
 
-    public List<WorkspaceService> findAll() {
-        var query = entityManager.createQuery("FROM Category", WorkspaceService.class);
+    public List<Workspace> findAll() {
+        var query = entityManager.createQuery("FROM Category", Workspace.class);
         return query.getResultList();
     }
 }

@@ -21,7 +21,7 @@ public class MemberSercvice {
     }
 
     @Transactional
-    public void deleteMember(Long id) {
+    public void deleteMember(Integer id) {
         var entity = entityManager.find(Member.class, id);
         entityManager.remove(entity);
     }

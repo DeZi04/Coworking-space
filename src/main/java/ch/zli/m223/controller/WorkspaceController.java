@@ -20,53 +20,42 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.Workspace;
 import ch.zli.m223.service.WorkspaceService;
 
-@Path("/categories")
-@Tag(name = "Categories", description = "Handling of categories")
+@Path("/workpsaces")
+@Tag(name = "workspace", description = "Handling of workspaces")
 @RolesAllowed({ "User", "Admin" })
-public class CategoryController {
+public class WorkspaceController {
 
     @Inject
-    Workspace categoryService;
+    WorkspaceService workspaceService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(
         summary = "Index all categories.", 
-        description = "Returns a list of all categories."
+        description = "Returns a list of all Workspaces."
     )
     public List<Workspace> index() {
-        return categoryService.findAll();
+        return workspaceService.findAll();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(
-        summary = "Creates a new category.", 
-        description = "Creates a new category and returns the newly added category."
+        summary = "Creates a new workspace.", 
+        description = "Creates a new workspace and returns the newly added workspace."
     )
-    public Workspace create(Workspace category) {
-       return categoryService.createCategory(category);
+    public Workspace create(Workspace workspace) {
+       return workspaceService.createWorkspace(workspace);
     }
 
     @Path("/{id}")
     @DELETE
     @Operation(
-        summary = "Deletes an category.",
-        description = "Deletes an category by its id."
+        summary = "Deletes an workspace.",
+        description = "Deletes an workspace by its id."
     )
-    public void delete(@PathParam("id") Long id) {
-        categoryService.deleteCategory(id);
+    public void delete(@PathParam("id") Integer id) {
+        workspaceService.deleteWorkspace(id);
     }
-
-    @Path("/{id}")
-    @PUT
-    @Operation(
-        summary = "Updates an category.",
-        description = "Updates an category by its id."
-    )
-    public Workspace update(@PathParam("id") Long id, Workspace category) {
-        return categoryService.updateCategory(id, category);
-    }
-
 }
