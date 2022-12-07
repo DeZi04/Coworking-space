@@ -33,6 +33,9 @@ public class Member {
   @Column(nullable = false)
   private String password;
 
+  @Column(nullable = false)
+  private String role;
+
   public Integer getId() {
     return id;
   }
@@ -71,6 +74,14 @@ public class Member {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
  

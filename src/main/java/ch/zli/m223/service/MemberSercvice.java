@@ -17,7 +17,7 @@ public class MemberSercvice {
 
     @Transactional
     public Member createMember(Member member) {
-        return entityManager.merge(member);
+        return entityManager.persist(member);
     }
 
     @Transactional

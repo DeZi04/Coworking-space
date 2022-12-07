@@ -11,7 +11,6 @@ import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 import ch.zli.m223.model.Member;
-import ch.zli.m223.model.Credential;
 import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
@@ -20,14 +19,14 @@ public class SessionService {
   @Inject
   MemberSercvice applicationUserService;
 
-  public Response authenticate(Credential credential) {
-    Optional<Member> principal = applicationUserService.findByEmail(credential.getEmail());
+  public Response authenticate(Member member) {
+    Optional<Member> principal = applicationUserService.findByEmail(member.getEmail());
 
     try {
-      if (principal.isPresent() && principal.get().getPassword().equals(credential.getPassword())) {
+      if (principal.isPresent() && principal.get().getPassword().equals(member.getPassword())) {
         String token = Jwt
             .issuer("https://zli.example.com/")
-            .upn(credential.getEmail())
+            .upn(member.getEmail())
             .groups(new HashSet<>(Arrays.asList("User", "Admin")))
             .expiresIn(Duration.ofHours(12))
             .sign();

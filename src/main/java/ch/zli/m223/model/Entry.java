@@ -21,7 +21,7 @@ public class Entry {
   @Column(nullable = false)
   private LocalDateTime date;
 
-  @OneToMany
+  @ManyToOne
   @Fetch(FetchMode.JOIN)
   private Workplace workplace;
 

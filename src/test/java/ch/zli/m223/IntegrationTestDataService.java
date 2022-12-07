@@ -1,8 +1,6 @@
 package ch.zli.m223;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashSet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
