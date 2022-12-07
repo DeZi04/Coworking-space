@@ -10,14 +10,14 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 
 @Entity
-public class Workspace {
+public class Workplace {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
   private Integer id;
 
   @Column(nullable = false)
-  private Boolean free;
+  private Boolean ocupation;
 
   public Integer getId() {
     return id;
@@ -27,12 +27,13 @@ public class Workspace {
     this.id = id;
   }
 
-  public Boolean getFree() {
-    return free;
+  public Boolean getOcupation() {
+    return ocupation;
   }
 
-  public void setFree(Boolean free) {
-    this.free = free;
+  public void setOcupation(Boolean ocupation) {
+    this.ocupation = ocupation;
   }
+
 
 }

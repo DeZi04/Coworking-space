@@ -7,7 +7,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 public class Entry {
@@ -24,7 +23,7 @@ public class Entry {
 
   @OneToMany
   @Fetch(FetchMode.JOIN)
-  private Set<Workspace> Workplace;
+  private Workplace workplace;
 
   @ManyToOne(optional = false)
   @Fetch(FetchMode.JOIN)
@@ -54,12 +53,12 @@ public class Entry {
     this.date = date;
   }
 
-  public Set<Workspace> getWorkplace() {
-    return Workplace;
+  public Workplace getWorkplace() {
+    return workplace;
   }
 
-  public void setWorkplace(Set<Workspace> workplace) {
-    Workplace = workplace;
+  public void setWorkplace(Workplace workplace) {
+    this.workplace = workplace;
   }
 
   public Member getMember() {
@@ -69,4 +68,6 @@ public class Entry {
   public void setMember(Member member) {
     this.member = member;
   }
+
+ 
 }

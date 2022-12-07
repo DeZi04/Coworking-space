@@ -8,7 +8,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -17,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import ch.zli.m223.model.Workspace;
+import ch.zli.m223.model.Workplace;
 import ch.zli.m223.service.WorkspaceService;
 
 @Path("/workpsaces")
@@ -34,7 +33,7 @@ public class WorkspaceController {
         summary = "Index all categories.", 
         description = "Returns a list of all Workspaces."
     )
-    public List<Workspace> index() {
+    public List<Workplace> index() {
         return workspaceService.findAll();
     }
 
@@ -45,7 +44,7 @@ public class WorkspaceController {
         summary = "Creates a new workspace.", 
         description = "Creates a new workspace and returns the newly added workspace."
     )
-    public Workspace create(Workspace workspace) {
+    public Workplace create(Workplace workspace) {
        return workspaceService.createWorkspace(workspace);
     }
 

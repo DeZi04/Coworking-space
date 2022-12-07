@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import ch.zli.m223.model.Workspace;
+import ch.zli.m223.model.Workplace;
 
 
 @ApplicationScoped
@@ -16,7 +16,7 @@ public class WorkspaceService {
     EntityManager entityManager;
 
     @Transactional
-    public Workspace createWorkspace(Workspace workspace) {
+    public Workplace createWorkspace(Workplace workspace) {
         return entityManager.merge(workspace);
     }
 
@@ -26,8 +26,8 @@ public class WorkspaceService {
         entityManager.remove(entity);
     }
 
-    public List<Workspace> findAll() {
-        var query = entityManager.createQuery("FROM Category", Workspace.class);
+    public List<Workplace> findAll() {
+        var query = entityManager.createQuery("FROM Category", Workplace.class);
         return query.getResultList();
     }
 }
