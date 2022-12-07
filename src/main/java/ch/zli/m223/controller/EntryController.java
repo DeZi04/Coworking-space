@@ -54,7 +54,7 @@ public class EntryController {
     @Path("/{id}")
     @PUT
     @Operation(summary = "Updates an entry.", description = "Updates an entry by its id.")
-    public Entry update(@PathParam("id") Long id, @Valid Entry entry) {
+    public Entry update(@PathParam("id") Integer id, @Valid Entry entry) {
         return entryService.updateEntry(id, entry);
     }
 

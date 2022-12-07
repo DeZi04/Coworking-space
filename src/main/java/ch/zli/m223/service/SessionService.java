@@ -18,7 +18,7 @@ import io.smallrye.jwt.build.Jwt;
 public class SessionService {
 
   @Inject
-  ApplicationUserService applicationUserService;
+  MemberSercvice applicationUserService;
 
   public Response authenticate(Credential credential) {
     Optional<Member> principal = applicationUserService.findByEmail(credential.getEmail());

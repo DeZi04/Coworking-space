@@ -11,25 +11,25 @@ import javax.transaction.Transactional;
 import ch.zli.m223.model.Member;
 
 @ApplicationScoped
-public class ApplicationUserService {
+public class MemberSercvice {
     @Inject
     EntityManager entityManager;
 
     @Transactional
-    public Member createUser(Member user) {
-        return entityManager.merge(user);
+    public Member createMember(Member member) {
+        return entityManager.merge(member);
     }
 
     @Transactional
-    public void deleteUser(Long id) {
+    public void deleteMember(Long id) {
         var entity = entityManager.find(Member.class, id);
         entityManager.remove(entity);
     }
 
     @Transactional
-    public Member updateUser(Long id, Member user) {
-        user.setId(id);
-        return entityManager.merge(user);
+    public Member updateMember(Integer id, Member member) {
+        member.setId(id);
+        return entityManager.merge(member);
     }
 
     public List<Member> findAll() {
