@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import ch.zli.m223.model.Category;
+import ch.zli.m223.model.Workspace;
 
 @ApplicationScoped
 public class CategoryService {
@@ -15,24 +15,24 @@ public class CategoryService {
     EntityManager entityManager;
 
     @Transactional
-    public Category createCategory(Category category) {
+    public Workspace createCategory(Workspace category) {
         return entityManager.merge(category);
     }
 
     @Transactional
     public void deleteCategory(Long id) {
-        var entity = entityManager.find(Category.class, id);
+        var entity = entityManager.find(Workspace.class, id);
         entityManager.remove(entity);
     }
 
     @Transactional
-    public Category updateCategory(Long id, Category category) {
+    public Workspace updateCategory(Long id, Workspace category) {
         category.setId(id);
         return entityManager.merge(category);
     }
 
-    public List<Category> findAll() {
-        var query = entityManager.createQuery("FROM Category", Category.class);
+    public List<Workspace> findAll() {
+        var query = entityManager.createQuery("FROM Category", Workspace.class);
         return query.getResultList();
     }
 }

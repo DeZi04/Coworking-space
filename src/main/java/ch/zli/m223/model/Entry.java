@@ -1,13 +1,10 @@
 package ch.zli.m223.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.AssertTrue;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -17,71 +14,59 @@ public class Entry {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
-  private Long id;
+  private Integer id;
 
   @Column(nullable = false)
-  private LocalDateTime checkIn;
+  private String status;
 
   @Column(nullable = false)
-  private LocalDateTime checkOut;
+  private LocalDateTime date;
+
+  @OneToMany
+  @Fetch(FetchMode.JOIN)
+  private Set<Workspace> Workplace;
 
   @ManyToOne(optional = false)
   @Fetch(FetchMode.JOIN)
-  private Category category;
+  private Member member;
 
-  @ManyToMany
-  @JoinTable(
-    name = "entry_tags",
-    joinColumns = @JoinColumn(name = "entry_id"),
-    inverseJoinColumns = @JoinColumn(name = "tag_id")
-  )
-  @JsonIgnoreProperties("entries")
-  @Fetch(FetchMode.JOIN)
-  private Set<Tag> tags;
-
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public LocalDateTime getCheckIn() {
-    return checkIn;
+  public String getStatus() {
+    return status;
   }
 
-  public void setCheckIn(LocalDateTime checkIn) {
-    this.checkIn = checkIn;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
-  public LocalDateTime getCheckOut() {
-    return checkOut;
+  public LocalDateTime getDate() {
+    return date;
   }
 
-  public void setCheckOut(LocalDateTime checkOut) {
-    this.checkOut = checkOut;
+  public void setDate(LocalDateTime date) {
+    this.date = date;
   }
 
-  public Category getCategory() {
-    return category;
+  public Set<Workspace> getWorkplace() {
+    return Workplace;
   }
 
-  public void setCategory(Category category) {
-    this.category = category;
+  public void setWorkplace(Set<Workspace> workplace) {
+    Workplace = workplace;
   }
 
-  public Set<Tag> getTags() {
-    return tags;
+  public Member getMember() {
+    return member;
   }
 
-  public void setTags(Set<Tag> tags) {
-    this.tags = tags;
-  }
-
-  @Schema(hidden = true)
-  @AssertTrue(message = "Check out should be after check in.")
-  private boolean isCheckOutAfterCheckIn() {
-    return this.checkOut.isAfter(this.checkIn);
+  public void setMember(Member member) {
+    this.member = member;
   }
 }

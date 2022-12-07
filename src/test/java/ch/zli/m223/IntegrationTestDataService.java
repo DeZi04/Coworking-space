@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import ch.zli.m223.model.Category;
+import ch.zli.m223.model.Workspace;
 import ch.zli.m223.model.Entry;
 import ch.zli.m223.model.Tag;
 import io.quarkus.arc.profile.IfBuildProfile;
@@ -27,15 +27,15 @@ public class IntegrationTestDataService {
   void generateTestData(@Observes StartupEvent event) {
 
     // Categories
-    var projectACategory = new Category();
+    var projectACategory = new Workspace();
     projectACategory.setTitle("Project A");
     entityManager.persist(projectACategory);
 
-    var projectBCategory = new Category();
+    var projectBCategory = new Workspace();
     projectBCategory.setTitle("Project B");
     entityManager.persist(projectBCategory);
 
-    var projectCCategory = new Category();
+    var projectCCategory = new Workspace();
     projectCCategory.setTitle("Project C");
     entityManager.persist(projectCCategory);
 

@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import ch.zli.m223.model.Category;
+import ch.zli.m223.model.Workspace;
 import ch.zli.m223.service.CategoryService;
 
 @Path("/categories")
@@ -34,7 +34,7 @@ public class CategoryController {
         summary = "Index all categories.", 
         description = "Returns a list of all categories."
     )
-    public List<Category> index() {
+    public List<Workspace> index() {
         return categoryService.findAll();
     }
 
@@ -45,7 +45,7 @@ public class CategoryController {
         summary = "Creates a new category.", 
         description = "Creates a new category and returns the newly added category."
     )
-    public Category create(Category category) {
+    public Workspace create(Workspace category) {
        return categoryService.createCategory(category);
     }
 
@@ -65,7 +65,7 @@ public class CategoryController {
         summary = "Updates an category.",
         description = "Updates an category by its id."
     )
-    public Category update(@PathParam("id") Long id, Category category) {
+    public Workspace update(@PathParam("id") Long id, Workspace category) {
         return categoryService.updateCategory(id, category);
     }
 
