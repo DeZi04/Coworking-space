@@ -24,22 +24,21 @@ import ch.zli.m223.service.MemberSercvice;
 
 @Path("/members")
 @Tag(name = "Members", description = "Handling of members")
-@RolesAllowed({ "User", "Admin" })
 public class MemberController {
   
   @Inject
   MemberSercvice memberService;
-
+  
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Operation(
       summary = "Index all users.", 
       description = "Returns a list of all members."
   )
+  @RolesAllowed({ "Admin" })
   public List<Member> index() {
       return memberService.findAll();
   }
-
   @POST
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
@@ -58,16 +57,18 @@ public class MemberController {
       summary = "Deletes an member.",
       description = "Deletes an member by its id."
   )
+  @RolesAllowed({  "Admin" })
   public void delete(@PathParam("id") Integer id) {
       memberService.deleteMember(id);
   }
-
+  
   @Path("/{id}")
   @PUT
   @Operation(
       summary = "Updates an member.",
       description = "Updates an member by its id."
   )
+  @RolesAllowed({ "Admin" })
   public Member update(@PathParam("id") Integer id, Member member) {
       return memberService.updateMember(id, member);
   }

@@ -23,7 +23,6 @@ import ch.zli.m223.service.EntryService;
 
 @Path("/entries")
 @Tag(name = "Entries", description = "Handling of entries")
-@RolesAllowed({ "User", "Admin" })
 public class EntryController {
 
     @Inject
@@ -32,6 +31,7 @@ public class EntryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all entries.", description = "Returns a list of all entries.")
+    @RolesAllowed({ "User", "Admin" })
     public List<Entry> index() {
         return entryService.findAll();
     }
@@ -40,13 +40,16 @@ public class EntryController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates a new entry.", description = "Creates a new entry and returns the newly added entry.")
+    @RolesAllowed({"User", "Admin" })
     public Entry create(@Valid Entry entry) {
-        return entryService.createEntry(entry);
+    return entryService.createEntry(entry);
     }
+
 
     @Path("/{id}")
     @DELETE
     @Operation(summary = "Deletes an entry.", description = "Deletes an entry by its id.")
+    @RolesAllowed({"User", "Admin" })
     public void delete(@PathParam("id") Long id) {
         entryService.deleteEntry(id);
     }
@@ -54,6 +57,7 @@ public class EntryController {
     @Path("/{id}")
     @PUT
     @Operation(summary = "Updates an entry.", description = "Updates an entry by its id.")
+    @RolesAllowed({ "User", "Admin" })        
     public Entry update(@PathParam("id") Integer id, @Valid Entry entry) {
         return entryService.updateEntry(id, entry);
     }

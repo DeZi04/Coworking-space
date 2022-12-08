@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import ch.zli.m223.model.Member;
+import ch.zli.m223.model.RoleEnum;
 import ch.zli.m223.model.StatusEnume;
 import ch.zli.m223.model.Workplace;
 import ch.zli.m223.model.Entry;
@@ -27,15 +28,15 @@ public class IntegrationTestDataService {
 
     // Workpaces
     var firstworkplace = new Workplace();
-    firstworkplace.setOcupation(null);
+    firstworkplace.setOcupation(true);
     entityManager.persist(firstworkplace);
 
     var secondworkplace = new Workplace();
-    secondworkplace.setOcupation(null);
+    secondworkplace.setOcupation(true);
     entityManager.persist(secondworkplace);
 
     var thirdworkplace = new Workplace();
-    thirdworkplace.setOcupation(null);
+    thirdworkplace.setOcupation(false);
     entityManager.persist(thirdworkplace);
 
     // Members
@@ -44,6 +45,7 @@ public class IntegrationTestDataService {
     firstMember.setLastname("Hugentobler");
     firstMember.setEmail("helena.hugentobler@tbz.ch");
     firstMember.setPassword("ZLI1234");
+    firstMember.setRole(RoleEnum.MEMBER);
     entityManager.persist(firstMember);
 
     var secondMember = new Member();
@@ -51,6 +53,7 @@ public class IntegrationTestDataService {
     secondMember.setLastname("Brook");
     secondMember.setEmail("mike.brook@tbz.ch");
     secondMember.setPassword("iLoveBrook");
+    secondMember.setRole(RoleEnum.MEMBER);
     entityManager.persist(secondMember);
 
     var thirdMember = new Member();
@@ -58,6 +61,7 @@ public class IntegrationTestDataService {
     thirdMember.setLastname("Friedmut");
     thirdMember.setEmail("gundula.friedmut@tbz.ch");
     thirdMember.setPassword("lovepeace");
+    thirdMember.setRole(RoleEnum.ADMIN);
     entityManager.persist(thirdMember);
 
     // Entries

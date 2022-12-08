@@ -5,10 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @NamedQueries({
@@ -36,6 +40,11 @@ public class Member {
   @Column(nullable = false)
   private RoleEnum role;
 
+  @ManyToOne
+  @Fetch(FetchMode.JOIN)
+  private Entry entries;
+
+  
   public Integer getId() {
     return id;
   }

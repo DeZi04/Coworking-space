@@ -21,7 +21,7 @@ import ch.zli.m223.service.WorkspaceService;
 
 @Path("/workpsaces")
 @Tag(name = "workspace", description = "Handling of workspaces")
-@RolesAllowed({ "User", "Admin" })
+@RolesAllowed({"Admin" })
 public class WorkspaceController {
 
     @Inject
