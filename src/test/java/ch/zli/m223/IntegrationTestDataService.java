@@ -73,7 +73,6 @@ public class IntegrationTestDataService {
     firstEntry.setMember(firstMember);
     entityManager.persist(firstEntry);
 
-
     var secondEntry = new Entry();
     secondEntry.setStatus(StatusEnume.ACCEPTED);
     secondEntry.setDuration(1);

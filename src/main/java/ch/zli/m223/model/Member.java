@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
