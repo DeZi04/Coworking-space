@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import com.google.common.hash.Hashing;
 
 import ch.zli.m223.model.Member;
+import ch.zli.m223.model.RoleEnum;
 import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
@@ -30,9 +31,13 @@ public class SessionService {
         String token = Jwt
             .issuer("https://zli.example.com/")
             .upn(member.getEmail())
-            .groups(new HashSet<>(Arrays.asList("User", "Admin")))
-            .expiresIn(Duration.ofHours(12))
+            .expiresIn(Duration.ofHours(24))
             .sign();
+            if (member.getRole() == RoleEnum.ADMIN) {
+              Jwt.groups(new HashSet<>(Arrays.asList( "Admin")));
+            } else {
+              Jwt.groups(new HashSet<>(Arrays.asList("User")));
+            }
         return Response
             .ok(principal.get())
             .cookie(new NewCookie("CoWorkingSpace", token))
