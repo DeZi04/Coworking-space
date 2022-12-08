@@ -1,13 +1,16 @@
 package ch.zli.m223.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.hibernate.annotations.Fetch;
@@ -39,11 +42,22 @@ public class Member {
   @Column(nullable = false)
   private RoleEnum role;
 
-  @ManyToOne
+  @OneToMany(cascade = CascadeType.ALL)
   @Fetch(FetchMode.JOIN)
-  private Entry entries;
+  private Set<Entry> entries;
+
+  public Member(){}
 
   
+  public Member(String firstname, String lastname, String email, String password, RoleEnum role, Set<Entry> entries) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.password = password;
+    this.role = role;
+    this.entries = entries;
+  }
+
   public Long getId() {
     return id;
   }
@@ -90,6 +104,16 @@ public class Member {
 
   public void setRole(RoleEnum role) {
     this.role = role;
+  }
+
+
+  public Set<Entry> getEntries() {
+    return entries;
+  }
+
+
+  public void setEntries(Set<Entry> entries) {
+    this.entries = entries;
   }
 
  

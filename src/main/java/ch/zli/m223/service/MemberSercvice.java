@@ -31,6 +31,7 @@ public class MemberSercvice {
     @Transactional
     public void deleteMember(Long id) {
         var entity = entityManager.find(Member.class, id);
+        entity.getEntries().forEach(e -> entityManager.remove(e));
         entityManager.remove(entity);
     }
 
@@ -41,13 +42,13 @@ public class MemberSercvice {
     }
 
     public List<Member> findAll() {
-        var query = entityManager.createQuery("FROM ApplicationUser", Member.class);
+        var query = entityManager.createQuery("FROM Member", Member.class);
         return query.getResultList();
     }
 
     public Optional<Member> findByEmail(String email) {
         return entityManager
-                .createNamedQuery("ApplicationUser.findByEmail", Member.class)
+                .createNamedQuery("Member.findByEmail", Member.class)
                 .setParameter("email", email)
                 .getResultStream()
                 .findFirst();

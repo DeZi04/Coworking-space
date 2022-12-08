@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
-import com.aayushatharva.brotli4j.decoder.DecoderJNI.Status;
-
 import ch.zli.m223.model.Entry;
 import ch.zli.m223.model.StatusEnume;
 import ch.zli.m223.model.TimeframeEnume;
@@ -27,7 +25,7 @@ import io.quarkus.test.h2.H2DatabaseTestResource;
 @QuarkusTestResource(H2DatabaseTestResource.class)
 @TestMethodOrder(OrderAnnotation.class)
 @TestSecurity(user = "test@example.com", roles = "User")
-public class EntryController {
+public class EntryControllerTest {
 
   @Test
   @Order(1)
@@ -40,6 +38,7 @@ public class EntryController {
   }
 
   @Test
+  @TestSecurity(user = "test@example.com", roles = "Admin")
   @Order(2)
   public void testDeleteEndpoint() {
     given()
@@ -56,7 +55,17 @@ public class EntryController {
   }
 
   @Test
+  @TestSecurity(user = "test@example.com", roles = "User")
   @Order(3)
+  public void testDeleteEndpointFrobidden() {
+    given()
+      .when().delete("/entries/" + 1)
+      .then()
+        .statusCode(403);
+  }
+
+  @Test
+  @Order(4)
   public void testPostEndpoint() {
     var payload = new Entry( StatusEnume.PENDING, LocalDate.now().plusDays(2), TimeframeEnume.MORNING, null, null);
 
@@ -70,7 +79,7 @@ public class EntryController {
   }
 
   @Test
-  @Order(4)
+  @Order(5)
   public void testPutEndpoint() {
     var payload = new Entry(StatusEnume.ACCEPTED, LocalDate.now().plusDays(1), TimeframeEnume.FULL_DAY, null, null);
     

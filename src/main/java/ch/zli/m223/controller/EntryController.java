@@ -49,7 +49,7 @@ public class EntryController {
     @Path("/{id}")
     @DELETE
     @Operation(summary = "Deletes an entry.", description = "Deletes an entry by its id.")
-    @RolesAllowed({"User", "Admin" })
+    @RolesAllowed({ "Admin" })
     public void delete(@PathParam("id") Long id) {
         entryService.deleteEntry(id);
     }

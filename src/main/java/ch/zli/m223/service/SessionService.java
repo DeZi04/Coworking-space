@@ -21,10 +21,10 @@ import io.smallrye.jwt.build.Jwt;
 public class SessionService {
 
   @Inject
-  MemberSercvice applicationUserService;
+  MemberSercvice memberService;
 
   public Response authenticate(Member member) {
-    Optional<Member> principal = applicationUserService.findByEmail(member.getEmail());
+    Optional<Member> principal = memberService.findByEmail(member.getEmail());
 
     try {
       if (principal.isPresent() && principal.get().getPassword().equals(Hashing.sha512().hashString(member.getPassword(), StandardCharsets.UTF_8).toString())) {
