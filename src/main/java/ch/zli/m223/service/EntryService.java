@@ -26,7 +26,7 @@ public class EntryService {
     }
 
     @Transactional
-    public Entry updateEntry(Integer id, Entry entry) {
+    public Entry updateEntry(long id, Entry entry) {
         entry.setId(id);
         return entityManager.merge(entry);
     }

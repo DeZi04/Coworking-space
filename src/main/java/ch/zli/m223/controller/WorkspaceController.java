@@ -54,7 +54,7 @@ public class WorkspaceController {
         summary = "Deletes an workspace.",
         description = "Deletes an workspace by its id."
     )
-    public void delete(@PathParam("id") Integer id) {
+    public void delete(@PathParam("id") Long id) {
         workspaceService.deleteWorkspace(id);
     }
 }

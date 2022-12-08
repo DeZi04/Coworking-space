@@ -21,7 +21,7 @@ public class WorkspaceService {
     }
 
     @Transactional
-    public void deleteWorkspace(Integer id) {
+    public void deleteWorkspace(Long id) {
         var entity = entityManager.find(WorkspaceService.class, id);
         entityManager.remove(entity);
     }

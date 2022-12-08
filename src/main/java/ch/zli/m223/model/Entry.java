@@ -15,7 +15,7 @@ public class Entry {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
-  private Integer id;
+  private Long id;
 
   @Column(nullable = false)
   private StatusEnume status;
@@ -36,11 +36,11 @@ public class Entry {
   @JsonIgnoreProperties("member")
   private Member member;
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

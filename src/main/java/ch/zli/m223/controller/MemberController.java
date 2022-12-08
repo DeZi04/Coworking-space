@@ -58,7 +58,7 @@ public class MemberController {
       description = "Deletes an member by its id."
   )
   @RolesAllowed({  "Admin" })
-  public void delete(@PathParam("id") Integer id) {
+  public void delete(@PathParam("id") Long id) {
       memberService.deleteMember(id);
   }
   
@@ -69,7 +69,7 @@ public class MemberController {
       description = "Updates an member by its id."
   )
   @RolesAllowed({ "Admin" })
-  public Member update(@PathParam("id") Integer id, Member member) {
+  public Member update(@PathParam("id") Long id, Member member) {
       return memberService.updateMember(id, member);
   }
 }

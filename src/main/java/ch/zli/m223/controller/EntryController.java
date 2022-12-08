@@ -58,7 +58,7 @@ public class EntryController {
     @PUT
     @Operation(summary = "Updates an entry.", description = "Updates an entry by its id.")
     @RolesAllowed({ "User", "Admin" })        
-    public Entry update(@PathParam("id") Integer id, @Valid Entry entry) {
+    public Entry update(@PathParam("id") Long id, @Valid Entry entry) {
         return entryService.updateEntry(id, entry);
     }
 

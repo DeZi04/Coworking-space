@@ -29,13 +29,13 @@ public class MemberSercvice {
     }
 
     @Transactional
-    public void deleteMember(Integer id) {
+    public void deleteMember(Long id) {
         var entity = entityManager.find(Member.class, id);
         entityManager.remove(entity);
     }
 
     @Transactional
-    public Member updateMember(Integer id, Member member) {
+    public Member updateMember(Long id, Member member) {
         member.setId(id);
         return entityManager.merge(member);
     }
