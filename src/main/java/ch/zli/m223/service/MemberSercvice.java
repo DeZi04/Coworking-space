@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.ws.rs.BadRequestException;
 
 import com.google.common.hash.Hashing;
 
@@ -28,12 +29,10 @@ public class MemberSercvice {
         } else {
             member.setRole(RoleEnum.MEMBER);
         }
-        if (Pattern.matches("^[a-zA-Z0-9]{6,}$", member.getPassword())  ) {
-                member.setPassword(Hashing.sha512().hashString(member.getPassword(), StandardCharsets.UTF_8).toString()); 
-        } else {
-            System.out.println("please use a stronger password");
+        if (!Pattern.matches("^[a-zA-Z0-9]{6,}$", member.getPassword())  ) {
+            throw new BadRequestException("Please use a stronger password.");
         }
-        
+        member.setPassword(Hashing.sha512().hashString(member.getPassword(), StandardCharsets.UTF_8).toString()); 
         return entityManager.merge(member);
     }
 

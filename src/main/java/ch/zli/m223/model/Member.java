@@ -42,7 +42,7 @@ public class Member {
   @Column(nullable = false)
   private RoleEnum role;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany()
   @Fetch(FetchMode.JOIN)
   private Set<Entry> entries;
 
