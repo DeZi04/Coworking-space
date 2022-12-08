@@ -8,7 +8,7 @@ import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Entry {
@@ -21,10 +21,10 @@ public class Entry {
   private StatusEnume status;
 
   @Column(nullable = false)
-  private LocalDateTime date;
+  private LocalDate date;
 
   @Column(nullable = false)
-  private double duration;
+  private TimeframeEnume timeframe;
 
   @ManyToOne
   @Fetch(FetchMode.JOIN)
@@ -36,7 +36,18 @@ public class Entry {
   @JsonIgnoreProperties("member")
   private Member member;
 
-  public Long getId() {
+  public Entry() {}
+
+  public Entry(StatusEnume status, LocalDate date, TimeframeEnume timeframe, Workplace workplace,
+      Member member) {
+    this.status = status;
+    this.date = date;
+    this.timeframe = timeframe;
+    this.workplace = workplace;
+    this.member = member;
+  }
+
+public Long getId() {
     return id;
   }
 
@@ -52,20 +63,20 @@ public class Entry {
     this.status = status;
   }
 
-  public LocalDateTime getDate() {
+  public LocalDate getDate() {
     return date;
   }
 
-  public void setDate(LocalDateTime date) {
+  public void setDate(LocalDate date) {
     this.date = date;
   }
 
-  public double getDuration() {
-    return duration;
+  public TimeframeEnume getTimeframe() {
+    return timeframe;
   }
 
-  public void setDuration(double duration) {
-    this.duration = duration;
+  public void setTimeframe(TimeframeEnume timeframe) {
+    this.timeframe = timeframe;
   }
 
   public Workplace getWorkplace() {

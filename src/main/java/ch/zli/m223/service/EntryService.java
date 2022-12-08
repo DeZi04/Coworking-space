@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import ch.zli.m223.model.Entry;
+import ch.zli.m223.model.StatusEnume;
 
 @ApplicationScoped
 public class EntryService {
@@ -16,6 +17,7 @@ public class EntryService {
 
     @Transactional
     public Entry createEntry(Entry entry) {
+        entry.setStatus(StatusEnume.PENDING);
         return entityManager.merge(entry);
     }
 
