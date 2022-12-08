@@ -10,22 +10,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
-import com.aayushatharva.brotli4j.decoder.DecoderJNI.Status;
 
-import ch.zli.m223.model.Entry;
+
+
 import ch.zli.m223.model.Member;
 import ch.zli.m223.model.RoleEnum;
-import ch.zli.m223.model.StatusEnume;
-import ch.zli.m223.model.TimeframeEnume;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
-import java.time.LocalDate;
-
 import javax.inject.Inject;
-import javax.management.relation.Role;
-
 import io.quarkus.test.h2.H2DatabaseTestResource;
 
 @QuarkusTest

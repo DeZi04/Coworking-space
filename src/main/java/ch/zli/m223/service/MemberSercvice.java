@@ -1,8 +1,10 @@
 package ch.zli.m223.service;
 
+import java.io.Console;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,8 +25,15 @@ public class MemberSercvice {
     public Member createMember(Member member) {
         if (findAll() == null) {
             member.setRole(RoleEnum.ADMIN);
+        } else {
+            member.setRole(RoleEnum.MEMBER);
         }
-        member.setPassword(Hashing.sha512().hashString(member.getPassword(), StandardCharsets.UTF_8).toString()); 
+        if (Pattern.matches("^[a-zA-Z0-9]{6,}$", member.getPassword())  ) {
+                member.setPassword(Hashing.sha512().hashString(member.getPassword(), StandardCharsets.UTF_8).toString()); 
+        } else {
+            System.out.println("please use a stronger password");
+        }
+        
         return entityManager.merge(member);
     }
 
