@@ -1,0 +1,89 @@
+commit 8c4b9dfefd7c7a1b4c784d9dbd94b55afe6d6966
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 14:24:09 2022 +0000
+
+    validation simplified and Readme extended
+
+commit 39c41bf7d9363d077180dd9db0cd91ac83130a02
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 13:44:40 2022 +0000
+
+    password validation implemented
+
+commit c5f21c37328f225b7914332f56d40191c5f5e171
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 13:01:44 2022 +0000
+
+    MemberTests created and read.me expanded
+
+commit 40c0b4e685d06844a7811c7de5302784cdf87ad5
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 10:39:52 2022 +0000
+
+    ad TimeframeEnume + attached to Entry + Entrytest
+
+commit cffaef9c6187e388c9202fb4d8104c452c35b010
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 09:17:21 2022 +0000
+
+    Updated id's
+
+commit 16a435521d821a7804159ba7fa4b37349218e38a
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 08:43:51 2022 +0000
+
+    setting roles in SessionService
+
+commit bb3d75b702545148e6565f9360e18cdde0abc55f
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 08:22:56 2022 +0000
+
+    Password hashed
+
+commit e5cfc11a986f8b34a9afe661a242096adbd395d9
+Author: denys <denysz@gmx.ch>
+Date:   Thu Dec 8 07:29:51 2022 +0000
+
+    set permissions
+
+commit d939bc02ba1a02ed73bf8e9ab455dd5fbc53807a
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 12:55:13 2022 +0000
+
+    Enums added
+
+commit 7f01bd8313a8cce3c07f261475d605619419061e
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 12:23:15 2022 +0000
+
+    refactoring code
+
+commit bea1d651a4528b0ef96b3ff265d9b8b4315b5083
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 10:44:41 2022 +0000
+
+    tidying up and writing tests
+
+commit 9131a6c100160e95f8e1fd810d9330b315a688af
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 10:00:45 2022 +0000
+
+    refactoring | Services complete
+
+commit 2ad0bd87e0078421453974896cd83c75547df6fd
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 10:13:37 2022 +0100
+
+    Services adjusted
+
+commit 9426baee622e2497bb591dffa446ee69c9909a5b
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 09:36:27 2022 +0100
+
+    Project settup and models prepared
+
+commit 368da6a4b72f18f1f77f6d95694ee9fdbe7cc4b5
+Author: denys <denysz@gmx.ch>
+Date:   Wed Dec 7 08:40:56 2022 +0100
+
+    first commit

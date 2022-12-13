@@ -22,12 +22,13 @@ public class WorkspaceService {
 
     @Transactional
     public void deleteWorkspace(Long id) {
-        var entity = entityManager.find(WorkspaceService.class, id);
+        var entity = entityManager.find(Workplace.class, id);
+        entity.getEntries().forEach(e -> entityManager.remove(e));
         entityManager.remove(entity);
     }
 
     public List<Workplace> findAll() {
-        var query = entityManager.createQuery("FROM Category", Workplace.class);
+        var query = entityManager.createQuery("FROM Workplace", Workplace.class);
         return query.getResultList();
     }
 }
